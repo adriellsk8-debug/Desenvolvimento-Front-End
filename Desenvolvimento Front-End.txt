@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Projeto Web Simples</title>
+
+
+
+  <!-- CSS dentro do mesmo arquivo -->
+
+  <style>
+
+    body{
+
+      font-family: Arial, sans-serif;
+
+      margin: 0;
+
+      padding: 0;
+
+      background: #a0deff;
+
+    }
+
+
+
+    header{
+
+      background: #040404;
+
+      padding: 20px;
+
+      color: hsl(0, 100%, 51%);
+
+      text-align: center;
+
+    }
+
+
+
+    nav{
+
+      background: #000000;
+
+      padding: 10px;
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 20px;
+
+    }
+
+
+
+    nav a{
+
+      color: rgb(225, 0, 0);
+
+      text-decoration: none;
+
+      font-weight: bold;
+
+    }
+
+
+
+    nav a:hover{
+
+      color: #4a4aff;
+
+      transition: 0.3s;
+
+    }
+
+
+
+    main{
+
+      padding: 20px;
+
+      max-width: 900px;
+
+      margin: auto;
+
+      background: white;
+
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+    }
+
+
+
+    .container{
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 20px;
+
+    }
+
+
+
+    .box{
+
+      flex: 1 1 250px;
+
+      border: 1px solid #ddd;
+
+      padding: 20px;
+
+      border-radius: 5px;
+
+    }
+
+
+
+    footer{
+
+      margin-top: 20px;
+
+      text-align: center;
+
+      background: #4a4aff;
+
+      padding: 10px;
+
+      color: rgb(255, 255, 255);
+
+    }
+
+
+
+    button{
+
+      background: #000000;
+
+      color: rgb(180, 0, 0);
+
+      border: none;
+
+      padding: 10px;
+
+      cursor: pointer;
+
+      border-radius: 4px;
+
+    }
+
+
+
+    button:hover{
+
+      background: #458fcc;
+
+    }
+
+
+
+    input{
+
+      padding: 8px;
+
+      width: 80%;
+
+      margin-bottom: 10px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <!-- Cabeçalho -->
+
+  <header>
+
+    <h1>Projeto Web - Desenvolvimento Front-End</h1>
+
+  </header>
+
+
+
+  <!-- Menu -->
+
+  <nav>
+
+    <a href="#calc">Calculadora IMC</a>
+
+    <a href="#form">Formulário</a>
+
+    <a href="#video">Vídeo</a>
+
+  </nav>
+
+
+
+  <main>
+
+
+
+    <!-- Seção calculadora IMC -->
+
+    <section id="calc" class="box">
+
+      <h2>Calculadora de IMC</h2>
+
+      <p>Digite seus dados:</p>
+
+      <input type="number" id="peso" placeholder="Peso (kg)">
+
+      <input type="number" id="altura" placeholder="Altura (m)">
+
+      <br>
+
+      <button onclick="calcularIMC()">Calcular IMC</button>
+
+      <p id="resultadoIMC"></p>
+
+    </section>
+
+
+
+    <!-- Formulário -->
+
+    <section id="form" class="box">
+
+      <h2>Formulário de Contato</h2>
+
+      <form onsubmit="return validar()" id="contatoForm">
+
+        <input type="text" id="nome" placeholder="Seu nome"><br>
+
+        <input type="email" id="email" placeholder="Seu e-mail"><br>
+
+        <textarea id="msg" placeholder="Sua mensagem" style="width:80%;height:80px;"></textarea><br>
+
+        <button type="submit">Enviar</button>
+
+      </form>
+
+      <p id="formMsg"></p>
+
+    </section>
+
+
+
+    <!-- Mídia -->
+
+    <section id="video" class="box">
+
+  <<section id="video" class="box">
+
+  <h2>Vídeo Exemplo</h2>
+
+
+
+<section id="video" class="box">
+
+  <h2>Vídeo Exemplo</h2>
+
+  <section id="video" class="box">
+
+  <h2>Vídeo Exemplo</h2>
+
+
+
+  <iframe
+
+    width="100%"
+
+    height="315"
+
+    src="https://www.youtube.com/embed/e5OuLSDayxs"
+
+    title="YouTube video player"
+
+    frameborder="0"
+
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+
+    allowfullscreen>
+
+  </iframe>
+
+</section>
+
+
+
+
+
+</section>
+
+
+
+</section>
+
+</section>
+
+
+
+  </main>
+
+
+
+  <footer>
+
+    <p>Projeto Front-End • 2025</p>
+
+  </footer>
+
+
+
+  <!-- JavaScript dentro do mesmo arquivo -->
+
+  <script>
+
+    function calcularIMC(){
+
+      const peso = parseFloat(document.getElementById("peso").value);
+
+      const altura = parseFloat(document.getElementById("altura").value);
+
+
+
+      if(!peso || !altura){
+
+        document.getElementById("resultadoIMC").innerText = "Preencha os campos corretamente.";
+
+        return;
+
+      }
+
+
+
+      const imc = peso / (altura * altura);
+
+      let status = "";
+
+
+
+      if(imc < 18.5) status = "Abaixo do peso";
+
+      else if(imc < 25) status = "Peso ideal";
+
+      else if(imc < 30) status = "Sobrepeso";
+
+      else status = "Obesidade";
+
+
+
+      document.getElementById("resultadoIMC").innerText =
+
+        `Seu IMC é ${imc.toFixed(2)} — ${status}`;
+
+    }
+
+
+
+    function validar(){
+
+      const nome = document.getElementById("nome").value;
+
+      const email = document.getElementById("email").value;
+
+
+
+      if(nome === "" || email === ""){
+
+        document.getElementById("formMsg").innerText =
+
+          "Preencha nome e e-mail!";
+
+        return false;
+
+      }
+
+
+
+      document.getElementById("formMsg").innerText =
+
+        "Formulário enviado com sucesso!";
+
+
+
+      return false; // evita recarregar a página
+
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>
+
